@@ -1,26 +1,15 @@
-from rest_framework.permissions import BasePermission
+from Module_Public.custom_Permission import MainPermission, SecondaryPermission
 
 
-class BasisPermission(BasePermission):
-
-    def has_permission(self, request, view):
-        user_permissions = request.user.get_permissions
-        if "AdminPermission" in user_permissions:
-            return True
-        
-        method = request.method
-        if request.method == "PATCH":
-            method = "PUT"
-        need_permission = f"{method}_{type(self).__name__}"
-
-        if need_permission in user_permissions:
-            return True
-        else:
-            return False
-
-
-class UserPermission(BasisPermission):
+class UserPermission(MainPermission):
     """
-    学生信息权限
+    全部学生信息
+    """
+    pass
+
+
+class DepartmentPermission(SecondaryPermission):
+    """
+    所在部门旗下学生信息
     """
     pass

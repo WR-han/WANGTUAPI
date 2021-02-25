@@ -13,3 +13,9 @@ class LoginFailed(APIException):
     status_code = status.HTTP_401_UNAUTHORIZED
     default_detail = _('找不到用户')
     default_code = 'Incorrect_account_or_password'
+
+
+class PermissionFailed(APIException):
+    status_code = status.HTTP_401_UNAUTHORIZED
+    default_detail = _('没有相应权限')
+    default_code = 'Insufficient_permissions'
