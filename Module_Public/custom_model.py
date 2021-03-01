@@ -21,10 +21,10 @@ class AccountModel(BaseModel):
     账户基础model
     """
 
-    # openid = models.CharField("openid", max_length=128, default="", blank=True, unique=True)
-    # unionid = models.CharField("unionid", max_length=128, default="", blank=True, unique=True)
+    openid = models.CharField("openid", max_length=128, default="", blank=True, unique=True)
+    unionid = models.CharField("unionid", max_length=128, default="", blank=True, unique=True)
     nickName = models.CharField("名字", max_length=10)
-    account = models.CharField("账号", max_length=20)
+    account = models.CharField("账号", max_length=20, unique=True)
     password = models.CharField("密码", max_length=64)
 
     class Meta:
